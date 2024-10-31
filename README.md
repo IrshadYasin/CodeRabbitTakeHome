@@ -12,9 +12,11 @@ This project is a TypeScript-based system to manage multiple AI model types and 
 
  FOLDER STRUCTURE
 src/
+
 ├── models/        # Core models and interfaces for configuration
 ├── types/         # Type definitions and branded types
-tests/         # Jest test files for the ModelManager and EventHandler
+
+tests/             # Jest test files for the ModelManager and EventHandler
 package.json       # Project dependencies and scripts
 tsconfig.json      # TypeScript configuration with strict mode
 README.md          # Project documentation
@@ -40,8 +42,8 @@ USAGE
 
 Model Configuration
 - Each model type (text, image, and audio) has specific configurations that can be set using a builder pattern and managed by the ModelManager.
-    ```
-    import { ModelManager } from './models/modelManager';
+```
+import { ModelManager } from './models/modelManager';
 import { ModelId } from './types/brand';
 
 // Example for text model configuration
@@ -72,7 +74,8 @@ const imageModel = new ModelManager<'image'>({
         createdBy: 'Graphics Team'
     }
 });
-    ```
+```
+
 Event Handling
 - EventHandler allows registering event listeners for each model type and event type (e.g., deployment.started, deployment.finished)
 
