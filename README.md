@@ -42,8 +42,8 @@ USAGE
 
 Model Configuration
 - Each model type (text, image, and audio) has specific configurations that can be set using a builder pattern and managed by the ModelManager.
-    ```
-    import { ModelManager } from './models/modelManager';
+```
+import { ModelManager } from './models/modelManager';
 import { ModelId } from './types/brand';
 
 // Example for text model configuration
@@ -74,7 +74,8 @@ const imageModel = new ModelManager<'image'>({
         createdBy: 'Graphics Team'
     }
 });
-    ```
+```
+
 Event Handling
 - EventHandler allows registering event listeners for each model type and event type (e.g., deployment.started, deployment.finished)
 
