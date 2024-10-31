@@ -11,13 +11,14 @@ This project is a TypeScript-based system to manage multiple AI model types and 
  - Unit tests for each model type and its events using Jest.
 
  FOLDER STRUCTURE
- src/
+src/
 ├── models/        # Core models and interfaces for configuration
 ├── types/         # Type definitions and branded types
-└── tests/         # Jest test files for the ModelManager and EventHandler
+tests/         # Jest test files for the ModelManager and EventHandler
 package.json       # Project dependencies and scripts
 tsconfig.json      # TypeScript configuration with strict mode
 README.md          # Project documentation
+jest.config.js     # jest configuration file
 
 GETTING STARTED
 Prereqs-
