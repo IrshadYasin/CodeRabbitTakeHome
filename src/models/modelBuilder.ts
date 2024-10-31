@@ -1,5 +1,3 @@
-// src/models/modelBuilder.ts
-
 import { ModelConfig, ModelType } from '../types/modelConfig';
 import { ModelId } from '../types/brand';
 

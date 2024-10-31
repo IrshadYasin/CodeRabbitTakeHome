@@ -1,5 +1,3 @@
-// tests/modelManager.test.ts
-
 import { ModelManager } from '../src/models/modelManager';
 import { ModelId } from '../src/types/brand';
 

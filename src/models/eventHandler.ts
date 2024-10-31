@@ -1,5 +1,3 @@
-// src/models/eventHandler.ts
-
 import { ModelId } from '../types/brand';
 import { ModelType, ModelConfig } from '../types/modelConfig';
 

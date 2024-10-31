@@ -1,5 +1,3 @@
-// src/types/modelTypes.ts
-
 export type ModelType = {
     text: {
         maxTokens: number;
