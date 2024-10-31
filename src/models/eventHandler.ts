@@ -1,31 +1,38 @@
 // src/models/eventHandler.ts
 
 import { ModelId } from '../types/brand';
-import { ModelConfig, ModelType } from '../types/modelConfig';
+import { ModelType, ModelConfig } from '../types/modelConfig';
 
-export type ModelEvent<T extends keyof ModelType> = {
+// Define possible event types
+type EventType = 'deployment.started' | 'deployment.finished';
+
+// Define the ModelEvent type for a specific model type (text, image, or audio)
+type ModelEvent<T extends keyof ModelType> = {
     modelId: ModelId;
     config: ModelConfig<T>;
-    eventType: 'deployment.started' | 'deployment.completed';
+    eventType: EventType;
     timestamp: Date;
 };
 
-type EventCallback<T extends keyof ModelType> = (event: ModelEvent<T>) => void;
-
+// The EventHandler class for handling events with type safety
 export class EventHandler<T extends keyof ModelType> {
-    private listeners: Map<string, EventCallback<T>[]> = new Map();
+    private listeners: {
+        [K in EventType]?: ((event: ModelEvent<T>) => void)[];
+    } = {};
 
-    on(eventType: ModelEvent<T>['eventType'], callback: EventCallback<T>): void {
-        if (!this.listeners.has(eventType)) {
-            this.listeners.set(eventType, []);
+    // Register an event listener for a specific event type
+    on(eventType: EventType, listener: (event: ModelEvent<T>) => void): void {
+        if (!this.listeners[eventType]) {
+            this.listeners[eventType] = [];
         }
-        this.listeners.get(eventType)!.push(callback);
+        this.listeners[eventType]?.push(listener);
     }
 
-    trigger(event: ModelEvent<T>): void {
-        const listeners = this.listeners.get(event.eventType);
+    // Emit an event to invoke all registered listeners for the specified event type
+    emit(eventType: EventType, event: ModelEvent<T>): void {
+        const listeners = this.listeners[eventType];
         if (listeners) {
-            listeners.forEach(callback => callback(event));
+            listeners.forEach((listener) => listener(event));
         }
     }
 }
